@@ -1,6 +1,7 @@
 import argparse
 from server import Server
 
+# Create parser with options
 def create_parser():
     parser = argparse.ArgumentParser(description = """
     Allows the user to retrieve a sub set of the devices, filtered by any or a combination of the characteristics defined in the naming standard

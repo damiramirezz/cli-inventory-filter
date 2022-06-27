@@ -1,6 +1,3 @@
-from asyncio import tasks
-
-
 class Server:
     """
     Server class with id, task, environment, location and team
@@ -32,7 +29,6 @@ class Server:
     @property
     def team(self):
         return self._team
-
     
     def __repr__(self):
         return f"{self._id}.{self._task}.{self._environment}.{self._location}.{self._team}\n"

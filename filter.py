@@ -40,16 +40,19 @@ except TypeError as err:
 
 # Filter options
 if args.i:
-    server_list = filter(lambda server: server.id == args.i, server_list)
+    server_list = list(filter(lambda server: server.id == args.i, server_list))
 if args.k:
-    server_list = filter(lambda server: server.task == args.k, server_list)
+    server_list = list(filter(lambda server: server.task == args.k, server_list))
 if args.e:
-    server_list = filter(lambda server: server.environment == args.e, server_list)
+    server_list = list(filter(lambda server: server.environment == args.e, server_list))
 if args.l:
-    server_list = filter(lambda server: server.location == args.l, server_list)
+    server_list = list(filter(lambda server: server.location == args.l, server_list))
 if args.t:
-    server_list = filter(lambda server: args.t == server.team, server_list)
+    server_list = list(filter(lambda server: args.t == server.team, server_list))
 
 # Print the server list
-for server in server_list:
-    print(server, end = '')
+if(len(list(server_list)) > 0):
+    for server in server_list:
+        print(server, end = '')
+else:
+    print("No server found with these filters")

@@ -1,4 +1,5 @@
 import argparse
+import sys
 from server import Server
 
 # Create parser with options
@@ -33,10 +34,12 @@ try:
 except FileNotFoundError as err:
     print('File not found!')
     print(err)
+    sys.exit(1)
 
 except TypeError as err:
     print('No file was passed by attribute')
     print(err)
+    sys.exit(1)
 
 # Filter options
 if args.i:
@@ -51,7 +54,7 @@ if args.t:
     server_list = list(filter(lambda server: args.t == server.team, server_list))
 
 # Print the server list
-if(len(list(server_list)) > 0):
+if(len(server_list) > 0):
     for server in server_list:
         print(server, end = '')
 else:

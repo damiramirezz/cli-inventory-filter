@@ -29,6 +29,9 @@ class Server:
     @property
     def team(self):
         return self._team
+
+    def __str__(self):
+        return f"{self._id}.{self._task}.{self._environment}.{self._location}.{self._team}\n"
     
     def __repr__(self):
         return f"{self._id}.{self._task}.{self._environment}.{self._location}.{self._team}\n"

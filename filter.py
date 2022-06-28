@@ -13,6 +13,7 @@ def create_parser():
     parser.add_argument('-e', help = 'env of the server', type = str.lower)
     parser.add_argument('-l', help = 'location of the server', type = str.lower)
     parser.add_argument('-t', help = 'team of the server', type = str.lower)
+    parser.add_argument('--save', help = 'save filtered servers to a file', action='store_true')
     return parser
 
 args = create_parser().parse_args()
@@ -56,6 +57,17 @@ if args.t:
 # Print the server list
 if(len(server_list) > 0):
     for server in server_list:
-        print(server, end = '')
+        print(server.__repr__(), end = '')
 else:
     print("No server found with these filters")
+
+# Create file with filtered servers
+if args.save:
+
+    try:
+        with open('filtered_inventory.txt', 'w') as f:
+            for server in server_list:
+                f.write(server.__str__())
+    except:
+        print('Failed to save file filter_inventory')
+        

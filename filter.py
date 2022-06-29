@@ -1,5 +1,6 @@
 import argparse
 import sys
+import os
 from server import Server
 
 # Create parser with options
@@ -58,14 +59,13 @@ if args.t:
 if(len(server_list) > 0):
     for server in server_list:
         print(server.__str__(), end = '')
+    # Create file with filtered servers
+    if args.save:
+        try:
+            with open(f'{os.environ["HOMEPATH"]}/Desktop/filtered_inventory.txt', 'w') as f:
+                for server in server_list:
+                    f.write(server.__str__())
+        except:
+            print('Failed to save file filter_inventory')
 else:
     print("No server found with these filters")
-
-# Create file with filtered servers
-if args.save:
-    try:
-        with open('filtered_inventory.txt', 'w') as f:
-            for server in server_list:
-                f.write(server.__str__())
-    except:
-        print('Failed to save file filter_inventory')

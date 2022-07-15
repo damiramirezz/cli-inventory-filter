@@ -67,5 +67,6 @@ if(len(server_list) > 0):
                     f.write(server.__str__())
         except:
             print('Failed to save file filter_inventory')
+            sys.exit(1)
 else:
     print("No server found with these filters")
